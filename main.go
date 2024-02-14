@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/Naveenchand06/go-gin-jwt-auth/constants"
+	"github.com/Naveenchand06/go-gin-jwt-auth/database"
 	"github.com/Naveenchand06/go-gin-jwt-auth/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -21,6 +22,9 @@ func main() {
         return
     }
 
+	// * Connecting to DB
+	database.GetDB()
+
 	// * Reading port number from .env file
 	port := os.Getenv(constants.PORT)
 	if port == "" {
@@ -36,10 +40,6 @@ func main() {
 	// * Registering Routes
 	routes.AuthRoutes(router)
 	routes.UserRoutes(router)
-
-	router.GET("/api-1", func(ctx *gin.Context) {
-		ctx.JSON(200, gin.H{"message": "Universe is with you!"})
-	})
 
 	// * Listening for requests
 	router.Run(":" + port)

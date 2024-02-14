@@ -14,6 +14,6 @@ func UserRoutes(router *gin.Engine) {
 	userRoutesGroup.Use(middleware.Authenticate)
 
 	// * Group Routes
-	userRoutesGroup.GET("/users", controllers.GetUsers)
-	userRoutesGroup.GET("/users/:id", controllers.GetUserById)
+	userRoutesGroup.GET("/", controllers.GetUsers)
+	userRoutesGroup.GET("/:id", controllers.GetUserById)
 }

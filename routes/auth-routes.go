@@ -11,6 +11,6 @@ func AuthRoutes(router *gin.Engine) {
 	authRoutesGroup := router.Group("/auth")
 
 	// * Group Routes
-	authRoutesGroup.POST("/auth/login", controllers.Login)
-	authRoutesGroup.POST("/auth/signup", controllers.Signup)
+	authRoutesGroup.POST("/login", controllers.Login)
+	authRoutesGroup.POST("/signup", controllers.Signup)
 }
